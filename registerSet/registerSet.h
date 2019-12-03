@@ -2,7 +2,7 @@ template<typename _Ty>
 class registerSet
 {
 public:
-	registerSet(_Ty* Register) : _Register(Register)
+	registerSet(_Ty* const Register) : _Register(Register)
 	{
 		_SizeRegister = sizeof(_Ty) * 8 - 1;
 	}
@@ -12,10 +12,9 @@ public:
 	public:
 		~reference() { // TRANSITION, ABI
 		}
-		reference& operator=(bool _Val)
+		inline void operator=(const bool& _Val)const
 		{
 			_PregisterSet->Set(_Mypos, _Val);
-			return *this;
 		}
 		operator bool()const
 		{
@@ -24,16 +23,19 @@ public:
 
 	private:
 		reference() : _PregisterSet(0), _Mypos(0) {}
-		reference(registerSet<_Ty>& _RegisterSet, _Ty& _Pos)
+
+		reference(registerSet& const _RegisterSet, const unsigned int& _Pos)
 			: _PregisterSet(&_RegisterSet), _Mypos(_Pos) {
 			// construct from registerSet reference and position
 		}
-		registerSet<_Ty>* _PregisterSet;
+		registerSet<_Ty>* const _PregisterSet;
 		_Ty _Mypos;
 	};
 
-	reference operator[](_Ty _Pos) 
-	{ return (reference(*this, _Pos)); }
+	inline const reference operator[](const unsigned int& _Pos)const
+	{
+		return (reference(*this, _Pos));
+	}
 
 	registerSet& operator=(_Ty _Val)
 	{
@@ -45,11 +47,11 @@ public:
 		*_Register = _Val;
 		return *this;
 	}
-	operator _Ty()
+	operator _Ty()const
 	{
 		return *_Register;
 	}
-	bool _Subscript(_Ty _Pos) const
+	const bool _Subscript(const unsigned int& _Pos) const
 	{
 		return (*_Register & ((_Ty)1 << _Pos));
 	}
@@ -60,16 +62,15 @@ public:
 		return *this;
 	}
 private:
-	registerSet& Set(_Ty _Pos, bool _Val = true)
+	inline void Set(const _Ty& _Pos, const bool& _Val = true)const
 	{
 		if (_Val)
-			*_Register |=  ((_Ty)1 << _Pos);
+			*_Register |= ((_Ty)1 << _Pos);
 		else
 			*_Register &= ~((_Ty)1 << _Pos);
-		return *this;
 	}
 
-	_Ty *_Register;
+	_Ty* const _Register;
 	_Ty _SizeRegister;
 };
 
