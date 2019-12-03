@@ -24,7 +24,7 @@ public:
 	private:
 		reference() : _PregisterSet(0), _Mypos(0) {}
 
-		reference(registerSet& const _RegisterSet, const unsigned int& _Pos)
+		reference(registerSet _RegisterSet, const unsigned int& _Pos)
 			: _PregisterSet(&_RegisterSet), _Mypos(_Pos) {
 			// construct from registerSet reference and position
 		}
@@ -32,9 +32,10 @@ public:
 		_Ty _Mypos;
 	};
 
-	inline const reference operator[](const unsigned int& _Pos)const
+	const reference operator[](const unsigned int& _Pos) const
 	{
-		return (reference(*this, _Pos));
+		reference tempObject(*this, _Pos); // not true!
+		return tempObject;
 	}
 
 	registerSet& operator=(_Ty _Val)
