@@ -1,18 +1,18 @@
 /*
-Example,
+Example:
 Initialize bits of the register:
+	initialize pointer for register - volatile unsigned char* p = &PORTB
 	registerSet<typeRegister> objRegister =
 	RBI::Init<typeRegister,&pointerToRegister>(1)(1)(1)(0)(1)(1)(1)(0);
 Example:
 Setting bits of the register:
 	objPORTB = RBI::Init<typeRegister>(1)(0)(1)(0)(1)(0)(0)(1);
 */
-
 namespace RBI // namespace RegisterBitInitialization
 {
 	reg8_t* PNULL;
 
-	template<typename _Ty, _Ty * *P>
+	template<typename _Ty, _Ty* const* const P>
 	class generateListBits
 	{
 	public:
@@ -44,7 +44,7 @@ namespace RBI // namespace RegisterBitInitialization
 		_Ty _SizeRegister;
 	};
 
-	template<typename _Ty, _Ty * *P>
+	template<typename _Ty, _Ty* const* const P>
 	static generateListBits<_Ty, P> Init(_Ty _Val)
 	{
 		return generateListBits<_Ty, P>()(_Val);
@@ -55,3 +55,4 @@ namespace RBI // namespace RegisterBitInitialization
 		return generateListBits<_Ty, &PNULL>()(_Val);
 	}
 }
+/****************************************************************************************/
