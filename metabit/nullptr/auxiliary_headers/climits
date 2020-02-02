@@ -40,7 +40,7 @@
 
 #pragma GCC system_header
 
-#include <limits.h>
+#include "metabit\nullptr\auxiliary_headers\limits.h"
 
 #ifndef _GLIBCXX_CLIMITS
 #define _GLIBCXX_CLIMITS 1

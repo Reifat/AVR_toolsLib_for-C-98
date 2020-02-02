@@ -46,8 +46,8 @@
 #undef __need_size_t
 #undef __need_NULL
 #undef __need_wint_t
-#include <bits/c++config.h>
-#include <stddef.h>
+#include "metabit\nullptr\auxiliary_headers\bits\c++config.h"
+#include "metabit\nullptr\auxiliary_headers\stddef.h"
 
 #if __cplusplus >= 201103L
 namespace std

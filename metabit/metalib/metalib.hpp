@@ -1,41 +1,67 @@
-#ifndef METALIB_H
-#define METALIB_H
 // Meta library 
+// C++98 style
+
+#ifndef _METALIB_HPP
+#define _METALIB_HPP
+
+// include default definitions type
+#ifndef _DEFINITIONS_TYPE_HPP
+#include "metabit\definitions_type\definitions_type.h"
+#endif
+
+// Soft for test type and limiting
+#define CANCATENATE_(arg0 , arg1) arg0 ## arg1
+#define MESSAGE_ERROR(message, LineError) \
+		(CANCATENATE_(ERROT_OF_STATIC_ASSERTION_##message##_ERROR_AT_LINE__, LineError))
+#define STATIC_ASSERT(cond, message) typedef unsigned int MESSAGE_ERROR(message, __LINE__)[(cond) ? 1 : -1]
+
+// Type checking
+template<typename _Ty0, typename _Ty1>
+struct SameType
+{
+	static const bool value = false;	// Types different
+};
+template<typename _Ty>
+struct SameType<_Ty, _Ty>
+{
+	static const bool value = true;		// Type same
+};
+
 
 // Conditional Type
  template <bool _Test, class _Ty0, class _Ty1>
- struct IfThenElseT { // Choose _Ty1 if _Test is true, and _Ty2 otherwise
+ struct IfThenElseType { // Choose _Ty1 if _Test is true, and _Ty2 otherwise
 	typedef _Ty0  Type;
 };
 template <class _Ty0, class _Ty1>
-struct IfThenElseT<false, _Ty0, _Ty1> {
+struct IfThenElseType<false, _Ty0, _Ty1> {
 	typedef _Ty1  Type;
 };
 
 // List Type ***************************************************************
 class Nil {};
-template<typename HeadT, typename TailT = Nil>
-class Cons
+template<typename HeadTy, typename TailTy = Nil>
+class TList
 {
 public:
-	typedef HeadT Head;
-	typedef TailT Tail;
+	typedef HeadTy Head;
+	typedef TailTy Tail;
 };
 //** Извлечение 1го элемента из списка
 template<typename List>
-struct FrontT
+struct FrontType
 {
 	typedef typename List::Head Type;
 };
 //** Добавление элемента в начало списка
 template<typename List, typename Element>
-struct PushFrontT
+struct PushFrontType
 {
-	typedef Cons<Element, List> Type;
+	typedef TList<Element, List> Type;
 };
 //** Удаление 1го элемента списка
 template<typename List>
-struct PopFrontT
+struct PopFrontType
 {
 	typedef typename List::Tail Type;
 };
@@ -55,14 +81,14 @@ public:
 //***************************************************************************************************************
 // Алгоритм индексации по списку типов
 
-template<typename List, std::size_t N, typename defT = Nil, bool Empty = IsEmpty<List>::Valye>
+template<typename List, size_t N, typename defT = Nil, bool Empty = IsEmpty<List>::Valye>
 class NthElement;
 
-template<typename List, std::size_t N, typename defT>
+template<typename List, size_t N, typename defT>
 class NthElement<List, N, defT, false>
 {
 private:
-	typedef typename PopFrontT<List>::Type _PopFront;
+	typedef typename PopFrontType<List>::Type _PopFront;
 public:
 	typedef typename NthElement<_PopFront, N - 1, defT>::Element Element;
 };
@@ -70,9 +96,9 @@ template<typename List, typename defT>
 class NthElement<List, 0, defT, false>
 {
 public:
-	typedef typename FrontT<List>::Type Element;
+	typedef typename FrontType<List>::Type Element;
 };
-template<typename List, std::size_t N, typename defT>
+template<typename List, size_t N, typename defT>
 class NthElement<List, N, defT, true>
 {
 public:
@@ -87,11 +113,11 @@ template<typename List>
 class LargestTypeT<List, false>
 {
 private:
-	typedef typename FrontT<List>::Type Contender;
-	typedef typename PopFrontT<List>::Type _PopFront;
+	typedef typename FrontType<List>::Type Contender;
+	typedef typename PopFrontType<List>::Type _PopFront;
 	typedef typename LargestTypeT<_PopFront>::Type Best;
 public:
-	typedef typename IfThenElseT<(sizeof(Contender) >= sizeof(Best)), Contender, Best>::Type Type;
+	typedef typename IfThenElseType<(sizeof(Contender) >= sizeof(Best)), Contender, Best>::Type Type;
 };
 template<typename List>
 class LargestTypeT<List, true>
@@ -118,16 +144,16 @@ template<typename List, typename Element,
 	template<typename T, typename U>class Compare>
 class InsertSortedT<List, Element, Compare, false>
 {
-	typedef typename FrontT<List>::Type _Front;
-	typedef typename PopFrontT<List>::Type _PopFront;
+	typedef typename FrontType<List>::Type _Front;
+	typedef typename PopFrontType<List>::Type _PopFront;
 	typedef typename InsertSortedT<_PopFront, Element, Compare>::Type RecursiveCall;
 	static const bool _ValCompare = Compare<Element, _Front>::Result;
 	// Вычисляем хвоста результирующего списка:
-	typedef typename IfThenElseT<_ValCompare, List, RecursiveCall>::Type NewTail;
+	typedef typename IfThenElseType<_ValCompare, List, RecursiveCall>::Type NewTail;
 	// Вычисляем головы результирующего списка:
-	typedef typename IfThenElseT<_ValCompare, Element, _Front>::Type NewHead;
+	typedef typename IfThenElseType<_ValCompare, Element, _Front>::Type NewHead;
 public:
-	typedef typename PushFrontT<NewTail, NewHead>::Type Type;
+	typedef typename PushFrontType<NewTail, NewHead>::Type Type;
 };
 // Базовый случай :
 template<typename List, typename Element,
@@ -135,7 +161,7 @@ template<typename List, typename Element,
 class InsertSortedT<List, Element, Compare, true>
 {
 public:
-	typedef typename PushFrontT<List, Element>::Type Type;
+	typedef typename PushFrontType<List, Element>::Type Type;
 };
 
 // Интерфейс сортировки //*****************************************************************************************
@@ -149,8 +175,8 @@ template<typename List,
 	template<typename T, typename U> class Compare>
 class InsertionSortT<List, Compare, false>
 {
-	typedef typename FrontT<List>::Type _Front;
-	typedef typename PopFrontT<List>::Type _PopFront;
+	typedef typename FrontType<List>::Type _Front;
+	typedef typename PopFrontType<List>::Type _PopFront;
 	typedef typename InsertionSortT<_PopFront, Compare>::Type RecursiveCall;
 public:
 	typedef typename InsertSortedT<RecursiveCall, _Front, Compare>::Type Type;

@@ -504,10 +504,10 @@ namespace std
 // First includes.
 
 // Pick up any OS-specific definitions.
-#include <bits/os_defines.h>
+#include "metabit\nullptr\auxiliary_headers\bits\os_defines.h"
 
 // Pick up any CPU-specific definitions.
-#include <bits/cpu_defines.h>
+#include "metabit\nullptr\auxiliary_headers\bits\cpu_defines.h"
 
 // If platform uses neither visibility nor psuedo-visibility,
 // specify empty default for namespace annotation macros.

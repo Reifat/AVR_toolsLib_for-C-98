@@ -1,12 +1,12 @@
-#ifndef _STDEX_NULLPTR_H
-#define _STDEX_NULLPTR_H
+#ifndef _NULLPTR_HPP
+#define _NULLPTR_HPP
 
 #if _MSC_VER > 1000
 #pragma once
 #endif // _MSC_VER > 1000
 
-#include <cstddef>
-#include <climits>
+#include "metabit\nullptr\auxiliary_headers\cstddef"
+#include "metabit\nullptr\auxiliary_headers\climits"
 
 #ifdef NULL
 #define STDEX_NULL NULL
@@ -363,4 +363,4 @@ typedef detail::_nullptr_chooser::type nullptr_t;
 #define nullptr (stdex::nullptr_t)(STDEX_NULL)
 
 
-#endif // _STDEX_NULLPTR_H
+#endif // _NULLPTR_HPP
