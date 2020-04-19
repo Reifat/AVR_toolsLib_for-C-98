@@ -1,12 +1,12 @@
-#ifndef _BITLIB_HPP
-#define _BITLIB_HPP
+п»ї#ifndef BITLIB_HPP
+#define BITLIB_HPP
 
 #ifndef	_DEFINITIONS_TYPE_HPP
-#include "metabit\definitions_type\definitions_type.h"
+#include "metabit\definitions_type\definitions_type.hpp"
 #endif
-
-namespace bitlib
+namespace mbl // namespace meta bit library
 {
+
 	// Get size register / return number of bits in register;
 	template<typename T>
 	struct SizeTy
@@ -14,13 +14,13 @@ namespace bitlib
 		static const size8_t _Size = sizeof(T) * 8;
 	};
 	
-	// Проверка, чтобы был установлен разряд n в лог.1;
+	// РџСЂРѕРІРµСЂРєР°, С‡С‚РѕР±С‹ Р±С‹Р» СѓСЃС‚Р°РЅРѕРІР»РµРЅ СЂР°Р·СЂСЏРґ n РІ Р»РѕРі.1;
 	inline bool IsBitSet(unsigned short val, size8_t n) 
 	{
 		return (val & (1 << n)) != 0;
 	}
 	
-	// Обнулить бит с номером n;
+	// РћР±РЅСѓР»РёС‚СЊ Р±РёС‚ СЃ РЅРѕРјРµСЂРѕРј n;
 	bool BitOff(unsigned short val, size8_t n)
 	{
 		return val & ~(1 << n);
@@ -33,35 +33,37 @@ namespace bitlib
 		return (x ^ (x >> SizeTy<T>::_Size - 1)) - (x >> SizeTy<T>::_Size - 1);
 	}
 	
-	// Подсчет количества бит установленных в лог.1;
-	template<typename T, size8_t N = SizeTy<T>::_Size>
-	struct Count_8
-	{
-		static inline uint8_t Result(T _Val)
+	// РџРѕРґСЃС‡РµС‚ РєРѕР»РёС‡РµСЃС‚РІР° Р±РёС‚ СѓСЃС‚Р°РЅРѕРІР»РµРЅРЅС‹С… РІ Р»РѕРі.1;
+	namespace detail {
+		template<typename T, size8_t N = SizeTy<T>::_Size>
+		struct Count_8
 		{
-			uint8_t SinglesBit = _Val;
-			SinglesBit -= (SinglesBit >> 1) & 0x55;
-			SinglesBit = ((SinglesBit >> 2) & 0x33) + (SinglesBit & 0x33);
-			SinglesBit = ((SinglesBit >> 4) + SinglesBit) & 0x0F;
-			return (SinglesBit + Count_8<T, (N - 8)>::Result(_Val >> 8));
-		}
-	};
-	template<typename T>
-	struct Count_8<T, 0>
-	{
-		static inline uint8_t Result(T _Val)
+			static inline uint8_t Result(T _Val)
+			{
+				uint8_t SinglesBit = _Val;
+				SinglesBit -= (SinglesBit >> 1) & 0x55;
+				SinglesBit = ((SinglesBit >> 2) & 0x33) + (SinglesBit & 0x33);
+				SinglesBit = ((SinglesBit >> 4) + SinglesBit) & 0x0F;
+				return (SinglesBit + Count_8<T, (N - 8)>::Result(_Val >> 8));
+			}
+		};
+		template<typename T>
+		struct Count_8<T, 0>
 		{
-			return 0;
-		}
-	};
-	// Возвращает количество битов, которые установлены в true;
+			static inline uint8_t Result(T _Val)
+			{
+				return 0;
+			}
+		};
+	}
+	// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ Р±РёС‚РѕРІ, РєРѕС‚РѕСЂС‹Рµ СѓСЃС‚Р°РЅРѕРІР»РµРЅС‹ РІ true;
 	template<typename _Ty>
 	size8_t Count(_Ty x)
 	{
-		return Count_8<_Ty>::Result(x);
+		return detail::Count_8<_Ty>::Result(x);
 	}
 	
-	// Установить лог 1 во всех разрядах после первой лог. 1цы
+	// РЈСЃС‚Р°РЅРѕРІРёС‚СЊ Р»РѕРі 1 РІРѕ РІСЃРµС… СЂР°Р·СЂСЏРґР°С… РїРѕСЃР»Рµ РїРµСЂРІРѕР№ Р»РѕРі. 1С†С‹
 	template<typename T, size8_t N = 1, bool over_size = true>
 	struct SetAfterTrue
 	{
@@ -79,7 +81,7 @@ namespace bitlib
 			return x;
 		}
 	};
-	// Число ведущих нулей
+	// Р§РёСЃР»Рѕ РІРµРґСѓС‰РёС… РЅСѓР»РµР№
 	template<typename T>
 	size8_t NumberLeadingZero(T x)
 	{
@@ -88,7 +90,7 @@ namespace bitlib
 		return number;
 	}
 	
-	// Целочисленный log2 по основанию 2
+	// Р¦РµР»РѕС‡РёСЃР»РµРЅРЅС‹Р№ log2 РїРѕ РѕСЃРЅРѕРІР°РЅРёСЋ 2
 	template<typename T>
 	T ilog2(T x)
 	{
@@ -97,14 +99,14 @@ namespace bitlib
 		return val_log2;
 	}
 
-	// Проверка, чтобы только 1н бит установлен в лог.1;
+	// РџСЂРѕРІРµСЂРєР°, С‡С‚РѕР±С‹ С‚РѕР»СЊРєРѕ 1РЅ Р±РёС‚ СѓСЃС‚Р°РЅРѕРІР»РµРЅ РІ Р»РѕРі.1;
 	template<typename T>
 	bool OnlySingleTrue(T x)
 	{
 		return (Count<T>(x) == 1);
 	}
 	
-	// Подсчет завершающих нулевых бит
+	// РџРѕРґСЃС‡РµС‚ Р·Р°РІРµСЂС€Р°СЋС‰РёС… РЅСѓР»РµРІС‹С… Р±РёС‚
 	template<typename T>
 	T CountTrailingZeros(T x)
 	{
@@ -112,14 +114,14 @@ namespace bitlib
 		return Count<T>(y);
 	}
 	
-	// Установка или сброс с разряда a по b
+	// РЈСЃС‚Р°РЅРѕРІРєР° РёР»Рё СЃР±СЂРѕСЃ СЃ СЂР°Р·СЂСЏРґР° a РїРѕ b
 	template<typename T>
 	T SetInRange(const T &x,const size8_t &at,const size8_t &to, bool _val = true)
 	{
 		size8_t a = ~(T)0 << to + 1;
 		size8_t b = ~(~(T)0 << at);
 		return _val ? ~(a | b) | x : (a | b) & x;
-	}
-}
+	}	
+} // end namespace meta bit library
 
 #endif

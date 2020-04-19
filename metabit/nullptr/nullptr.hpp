@@ -1,5 +1,5 @@
-#ifndef _NULLPTR_HPP
-#define _NULLPTR_HPP
+﻿#ifndef NULLPTR_HPP
+#define NULLPTR_HPP
 
 #if _MSC_VER > 1000
 #pragma once

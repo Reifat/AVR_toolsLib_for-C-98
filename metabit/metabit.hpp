@@ -1,31 +1,43 @@
-#ifndef _METABIN_HPP
-#define _METABIN_HPP
+﻿#ifndef METABIT_HPP
+#define METABIT_HPP
 
-#ifndef	_DEFINITIONS_TYPE_HPP
+#ifndef	DEFINITIONS_TYPE_HPP
 #include "metabit\definitions_type\definitions_type.hpp"
 #endif
 
-#ifndef _NULLPTR_HPP
+#ifndef NULLPTR_HPP
 #include "metabit\nullptr\nullptr.hpp"
 #endif
 
-#ifndef _METALIB_HPP
-#include "metabit\metalib\metalib.hpp"
+#ifndef TYPE_RTRAITS_HPP
+#include "metabit\type_traits\type_traits.hpp"
 #endif
 
-#ifndef _TUPLE
-#include "metabit\metalib\tuple.hpp"
+#ifndef  REMOVE_CV_HPP
+#include "metabit\type_traits\remove_cv.hpp"
 #endif
 
-#ifndef _BITLIB_HPP
+#ifndef  REFERENCE_WRAPPER_HPP
+#include "metabit\utility\ref.hpp"
+#endif
+
+#ifndef TUPLE_HPP
+#include "metabit\tuple\tuple.hpp"
+#endif
+
+#ifndef BITLIB_HPP
 #include "metabit\bitlib\bitlib.hpp"
 #endif
 
-#ifndef _REGISTERSET_HPP
+#ifndef REGISTERSET_HPP
 #include "metabit\register_set\registerset.hpp"
 #endif
 
-#ifndef _AVRDEF_HPP
+#ifndef REGISTER_INIT_HPP
+#include "metabit\register_set\register_init.hpp"
+#endif
+
+#ifndef AVRDEF_HPP
 #include "metabit\avr_def\avrdef.hpp"
 #endif
 
