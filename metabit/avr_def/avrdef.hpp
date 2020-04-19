@@ -7,7 +7,7 @@
 #endif
 
 // definitions const pointer on register for AVR;
-namespace cptr // cptr - namespace const pointer;
+namespace mcreg // mcreg - namespace microcontroller registers;
 {
 	/* Registers and associated bit numbers */
 
@@ -759,6 +759,6 @@ namespace cptr // cptr - namespace const pointer;
 #ifdef UDR3
 	mbl::uint8ptr_t const Odr3 = &UDR3;
 #endif
-}
+} // end namespace microcontroller registers;
 
 #endif /*_AVRDEF_HPP*/

@@ -1,4 +1,4 @@
-п»ї#ifndef BITLIB_HPP
+#ifndef BITLIB_HPP
 #define BITLIB_HPP
 
 #ifndef	_DEFINITIONS_TYPE_HPP
@@ -14,14 +14,16 @@ namespace mbl // namespace meta bit library
 		static const size8_t _Size = sizeof(T) * 8;
 	};
 	
-	// РџСЂРѕРІРµСЂРєР°, С‡С‚РѕР±С‹ Р±С‹Р» СѓСЃС‚Р°РЅРѕРІР»РµРЅ СЂР°Р·СЂСЏРґ n РІ Р»РѕРі.1;
-	inline bool IsBitSet(unsigned short val, size8_t n) 
+	// Проверка, чтобы был установлен разряд n в лог.1;
+	template<typename T>
+	inline bool IsBitSet(T val, size8_t n) 
 	{
 		return (val & (1 << n)) != 0;
 	}
 	
-	// РћР±РЅСѓР»РёС‚СЊ Р±РёС‚ СЃ РЅРѕРјРµСЂРѕРј n;
-	bool BitOff(unsigned short val, size8_t n)
+	// Обнулить бит с номером n;
+	template<typename T>
+	bool BitOff(T val, size8_t n)
 	{
 		return val & ~(1 << n);
 	}
@@ -33,7 +35,7 @@ namespace mbl // namespace meta bit library
 		return (x ^ (x >> SizeTy<T>::_Size - 1)) - (x >> SizeTy<T>::_Size - 1);
 	}
 	
-	// РџРѕРґСЃС‡РµС‚ РєРѕР»РёС‡РµСЃС‚РІР° Р±РёС‚ СѓСЃС‚Р°РЅРѕРІР»РµРЅРЅС‹С… РІ Р»РѕРі.1;
+	// Подсчет количества бит установленных в лог.1;
 	namespace detail {
 		template<typename T, size8_t N = SizeTy<T>::_Size>
 		struct Count_8
@@ -56,57 +58,65 @@ namespace mbl // namespace meta bit library
 			}
 		};
 	}
-	// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ Р±РёС‚РѕРІ, РєРѕС‚РѕСЂС‹Рµ СѓСЃС‚Р°РЅРѕРІР»РµРЅС‹ РІ true;
+	// Возвращает количество битов, которые установлены в true;
 	template<typename _Ty>
 	size8_t Count(_Ty x)
 	{
 		return detail::Count_8<_Ty>::Result(x);
 	}
 	
-	// РЈСЃС‚Р°РЅРѕРІРёС‚СЊ Р»РѕРі 1 РІРѕ РІСЃРµС… СЂР°Р·СЂСЏРґР°С… РїРѕСЃР»Рµ РїРµСЂРІРѕР№ Р»РѕРі. 1С†С‹
-	template<typename T, size8_t N = 1, bool over_size = true>
-	struct SetAfterTrue
+	// Установить лог.1 во всех разрядах после первой лог. 1цы
+	namespace detail
 	{
-		static T Result(T x)
+		template<typename T, size8_t N = 1, bool over_size = true>
+		struct _SetAfterTrue
 		{
-			T y = x | (x >> N);
-			return SetAfterTrue<T,(N << 1),(N < (SizeTy<T>::_Size >> 1)) >::Result(y);
-		}
-	};
-	template<typename T, size8_t N>
-	struct SetAfterTrue<T, N, false>
+			static T Result(T x)
+			{
+				T y = x | (x >> N);
+				return _SetAfterTrue<T,(N << 1),(N < (SizeTy<T>::_Size >> 1)) >::Result(y);
+			}
+		};
+		template<typename T, size8_t N>
+		struct _SetAfterTrue<T, N, false>
+		{
+			static T Result(T x)
+			{
+				return x;
+			}
+		};
+	}
+	template<typename T>
+	inline T SetAfterTrue(T x)
 	{
-		static T Result(T x)
-		{
-			return x;
-		}
-	};
-	// Р§РёСЃР»Рѕ РІРµРґСѓС‰РёС… РЅСѓР»РµР№
+		return detail::_SetAfterTrue<T>::Result(x);
+	}
+	// Число ведущих нулей
 	template<typename T>
 	size8_t NumberLeadingZero(T x)
 	{
-		T val = SetAfterTrue<T>::Result(x);
+		T val = detail::_SetAfterTrue<T>::Result(x);
 		size8_t number = Count<T>(~val);
 		return number;
 	}
 	
-	// Р¦РµР»РѕС‡РёСЃР»РµРЅРЅС‹Р№ log2 РїРѕ РѕСЃРЅРѕРІР°РЅРёСЋ 2
+	// Целочисленный log2 по основанию 2
 	template<typename T>
 	T ilog2(T x)
 	{
-		T val = SetAfterTrue<T>::Result(x);
+		T val = detail::_SetAfterTrue<T>::Result(x);
 		size8_t val_log2 = Count<T>(val) - 1;
 		return val_log2;
 	}
 
-	// РџСЂРѕРІРµСЂРєР°, С‡С‚РѕР±С‹ С‚РѕР»СЊРєРѕ 1РЅ Р±РёС‚ СѓСЃС‚Р°РЅРѕРІР»РµРЅ РІ Р»РѕРі.1;
+	// Проверка, чтобы только 1н бит установлен в лог.1;
 	template<typename T>
 	bool OnlySingleTrue(T x)
 	{
 		return (Count<T>(x) == 1);
 	}
 	
-	// РџРѕРґСЃС‡РµС‚ Р·Р°РІРµСЂС€Р°СЋС‰РёС… РЅСѓР»РµРІС‹С… Р±РёС‚
+	// Подсчет количества завершающих нулевых бит
 	template<typename T>
 	T CountTrailingZeros(T x)
 	{
@@ -114,7 +124,7 @@ namespace mbl // namespace meta bit library
 		return Count<T>(y);
 	}
 	
-	// РЈСЃС‚Р°РЅРѕРІРєР° РёР»Рё СЃР±СЂРѕСЃ СЃ СЂР°Р·СЂСЏРґР° a РїРѕ b
+	// Установка или сброс с разряда a по b
 	template<typename T>
 	T SetInRange(const T &x,const size8_t &at,const size8_t &to, bool _val = true)
 	{
