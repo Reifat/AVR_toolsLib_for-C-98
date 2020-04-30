@@ -1,4 +1,4 @@
-﻿// Specific definitions for newlib  -*- C++ -*-
+// Specific definitions for newlib  -*- C++ -*-
 
 // Copyright (C) 2000-2016 Free Software Foundation, Inc.
 //

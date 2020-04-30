@@ -1,10 +1,15 @@
-п»ї#ifndef REMOVE_CV_HPP
+/*
+ * Автор модификаций Reifat
+ * GitHub Repository - https://github.com/Reifat
+ * Последние изменения 30.04.2020.
+*/
+#ifndef REMOVE_CV_HPP
 #define REMOVE_CV_HPP
 
 namespace mbl // namespace meta bit library 
 {
 
-    // remove_cv.h - РІР·СЏС‚ РёР· Р±РёР±Р»РёРѕС‚РµРєРё boost(РІРЅРµСЃРµРЅР° СѓРїСЂРѕС‰Р°СЋС‰Р°СЏ РјРѕРґРёС„РёРєР°С†РёСЏ);
+    // remove_cv.h - взят из библиотеки boost(внесена упрощающая модификация);
     //  (C) Copyright Dave Abrahams, Steve Cleary, Beman Dawes, Howard
     //  Hinnant & John Maddock 2000. 
 

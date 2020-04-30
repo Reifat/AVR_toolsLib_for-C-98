@@ -1,3 +1,8 @@
+/* Библиотека для работы с разрядами
+ * Автор Reifat
+ * GitHub Repository - https://github.com/Reifat
+ * Последние изменения 30.04.2020.
+*/
 #ifndef BITLIB_HPP
 #define BITLIB_HPP
 
@@ -40,7 +45,7 @@ namespace mbl // namespace meta bit library
 		template<typename T, size8_t N = SizeTy<T>::_Size>
 		struct Count_8
 		{
-			static inline uint8_t Result(T _Val)
+			inline static const uint8_t Result(T _Val)
 			{
 				uint8_t SinglesBit = _Val;
 				SinglesBit -= (SinglesBit >> 1) & 0x55;
@@ -52,7 +57,7 @@ namespace mbl // namespace meta bit library
 		template<typename T>
 		struct Count_8<T, 0>
 		{
-			static inline uint8_t Result(T _Val)
+			inline static const uint8_t Result(T _Val)
 			{
 				return 0;
 			}
@@ -71,7 +76,7 @@ namespace mbl // namespace meta bit library
 		template<typename T, size8_t N = 1, bool over_size = true>
 		struct _SetAfterTrue
 		{
-			static T Result(T x)
+			inline static const T Result(T x)
 			{
 				T y = x | (x >> N);
 				return _SetAfterTrue<T,(N << 1),(N < (SizeTy<T>::_Size >> 1)) >::Result(y);
@@ -80,7 +85,7 @@ namespace mbl // namespace meta bit library
 		template<typename T, size8_t N>
 		struct _SetAfterTrue<T, N, false>
 		{
-			static T Result(T x)
+			inline static const T Result(T x)
 			{
 				return x;
 			}
@@ -128,7 +133,7 @@ namespace mbl // namespace meta bit library
 	template<typename T>
 	T SetInRange(const T &x,const size8_t &at,const size8_t &to, bool _val = true)
 	{
-		size8_t a = ~(T)0 << to + 1;
+		size8_t a = ~(T)0 << (to + 1);
 		size8_t b = ~(~(T)0 << at);
 		return _val ? ~(a | b) | x : (a | b) & x;
 	}	

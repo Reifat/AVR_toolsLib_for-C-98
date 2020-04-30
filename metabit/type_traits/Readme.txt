@@ -1,4 +1,4 @@
-﻿Metaprogramming library
+Metaprogramming library
 
 Condition type: Choose T0 if _Test is true, and T1 otherwise
 Examples using:

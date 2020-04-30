@@ -1,4 +1,11 @@
-п»ї#ifndef NULLPTR_HPP
+/*
+ * Реализация nulptr взята у автора github репозитория
+ * "Aleksandr oktonion"
+ * ссылка на репозиторий его github https://github.com/oktonion
+ * модификацыя Reifat
+ * GitHub Repository - https://github.com/Reifat
+*/
+#ifndef NULLPTR_HPP
 #define NULLPTR_HPP
 
 #if _MSC_VER > 1000

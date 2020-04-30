@@ -1,4 +1,4 @@
-﻿// Specific definitions for generic platforms  -*- C++ -*-
+// Specific definitions for generic platforms  -*- C++ -*-
 
 // Copyright (C) 2015-2016 Free Software Foundation, Inc.
 //

@@ -1,4 +1,4 @@
-﻿// Predefined symbols and macros -*- C++ -*-
+// Predefined symbols and macros -*- C++ -*-
 
 // Copyright (C) 1997-2016 Free Software Foundation, Inc.
 //

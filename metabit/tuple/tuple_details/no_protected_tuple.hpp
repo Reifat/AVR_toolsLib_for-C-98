@@ -1,4 +1,4 @@
-п»ї#ifndef NO_PROTECTED_TUPLE_HPP
+#ifndef NO_PROTECTED_TUPLE_HPP
 #define NO_PROTECTED_TUPLE_HPP
 
 #include "metabit\metalib\metalib.hpp"
@@ -144,7 +144,7 @@ namespace mbl // namespace meta bit library
 		size_t  _size_tuple;
 	};
 
-	// РРЅРґРёРІРёРґСѓР°Р»СЊРЅС‹Р№ РєРѕСЂС‚РµР¶
+	// Индивидуальный кортеж
 	template<typename _Ty>
 	struct SpecialTuple
 	{

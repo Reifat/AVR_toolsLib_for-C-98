@@ -1,8 +1,7 @@
-п»ї/*
- * default_definitions.h
- *
- * Created: 26.12.2019 17:45:57
- *  Author: Rayfat
+/*
+ * Автор Reifat
+ * GitHub Repository - https://github.com/Reifat
+ * Последние изменения 30.04.2020.
  */ 
 
 
@@ -19,10 +18,10 @@ namespace mbl // namespace meta bit library
 	typedef unsigned int			uint16_t;
 	typedef unsigned long int		uint32_t;
 	typedef unsigned long long int	uint64_t;
-	typedef char					int8_st;
-	typedef int						int16_st;
-	typedef long int				int32_st;
-	typedef long long int			int64_st;
+	typedef char					int8_t;
+	typedef int						int16_t;
+	typedef long int				int32_t;
+	typedef long long int			int64_t;
 
 	typedef unsigned char			size_t;   // Default type for SIZE.
 	typedef unsigned char			size8_t;
