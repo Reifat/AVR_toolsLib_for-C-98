@@ -43,8 +43,5 @@
 #include "metabit\register_set\register_init.hpp"
 #endif
 
-#ifndef AVRDEF_HPP
-#include "metabit\avr_def\avrdef.hpp"
-#endif
 
 #endif
