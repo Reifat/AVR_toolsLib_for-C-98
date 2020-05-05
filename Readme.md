@@ -1,4 +1,6 @@
 ﻿### Meta Bit Library
+Библиотека предназначена для написания кросплатформенных программ под микроконтроллеры.
+
 
 
 ###### Содержание библиотеки:
@@ -15,6 +17,8 @@
 9. [Заголовочные файлы с указателями на регистры МК AVR]
 10. [Примеры применения библиотеки]
 
+![Using class RegisterSet]
+![Not using class RegisterSet]
 
 [Класс RegisterSet]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/tree/master/doc/metabit/register_set
 [Функция инициализации разрядов BitInit]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/tree/master/doc/metabit/register_set
@@ -28,8 +32,6 @@
 [Препроцессорный псевдо "цикл"]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/tree/master/doc/metabit/preprocessor
 [Заголовочные файлы с указателями на регистры МК AVR]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/tree/master/doc/avrdef_ptr
 [Примеры применения библиотеки]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/tree/master/example
-
-![Using class RegisterSet]
 
 [Using class RegisterSet]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/blob/master/doc/pictures/1.PNG
 [Not using class RegisterSet]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/blob/master/doc/pictures/2.PNG
