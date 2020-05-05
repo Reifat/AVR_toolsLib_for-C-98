@@ -1,8 +1,8 @@
 ﻿### Meta Bit Library
 
 
-###### Содержание библиотеки
-1. Класс RegisterSet
+###### Содержание библиотеки:
+1. [Класс RegisterSet]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/tree/master/doc/metabit/register_set
    1.1. Функция инициализации разрядов BitInit
 2. Библиотека функций для работы с разрядами BitLib
 3. Кортэж типов Tuple
