@@ -29,6 +29,8 @@
 [Заголовочные файлы с указателями на регистры МК AVR]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/tree/master/doc/avrdef_ptr
 [Примеры применения библиотеки]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/tree/master/example
 
+![Using class RegisterSet]
+
 [Using class RegisterSet]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/blob/master/doc/pictures/1.PNG
 [Not using class RegisterSet]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/blob/master/doc/pictures/2.PNG
 
