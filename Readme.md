@@ -16,10 +16,9 @@
 9. [Заголовочные файлы с указателями на регистры МК AVR]
 10. [Примеры применения библиотеки]
 
-###### Краткий обзор mbl:
-
-![Using class RegisterSet]
-![Not using class RegisterSet]
+###### Совместимость
+GNU C v5.4 (Atmel studio 7)
+MS C/C++ Compiler (VS 2019)
 
 [Класс RegisterSet]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/tree/master/doc/metabit/register_set
 [Функция инициализации разрядов BitInit]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/tree/master/doc/metabit/register_set
@@ -34,8 +33,6 @@
 [Заголовочные файлы с указателями на регистры МК AVR]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/tree/master/doc/avrdef_ptr
 [Примеры применения библиотеки]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/tree/master/example
 
-[Using class RegisterSet]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/blob/master/doc/pictures/1.PNG
-[Not using class RegisterSet]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/blob/master/doc/pictures/2.PNG
 
 
 
