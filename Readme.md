@@ -17,8 +17,8 @@
 10. [Примеры применения библиотеки]
 
 ###### Совместимость
-GNU C v5.4 (Atmel studio 7)
-MS C/C++ Compiler (VS 2019)
+ GNU C v5.4 (Atmel studio 7)
+ MS C/C++ Compiler (VS 2019)
 
 [Класс RegisterSet]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/tree/master/doc/metabit/register_set
 [Функция инициализации разрядов BitInit]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/tree/master/doc/metabit/register_set
