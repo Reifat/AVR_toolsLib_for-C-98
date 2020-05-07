@@ -1,5 +1,6 @@
-﻿### Meta Bit Library
-
+﻿### Meta Bit Library (mbl)
+Библиотека предназначена для написания кросплатформенных программ под микроконтроллеры (МК).
+mbl содержит класс обертку для регистров МК, интерфейс которого позволяет манипулировать разрядами, а также ряд методов для взаимодействия с регистром. Разработка с применением объектов класса обертки позволяет абстрагироваться от конкретной аппаратной платформы МК. Перенесение кода праграммы сводится к конфигурированию используемых объектов в программе.
 
 ###### Содержание библиотеки:
 1. [Класс RegisterSet]
@@ -15,6 +16,9 @@
 9. [Заголовочные файлы с указателями на регистры МК AVR]
 10. [Примеры применения библиотеки]
 
+###### Совместимость
+ - GNU C v5.4 (Atmel studio 7)
+ - MS C/C++ Compiler (VS 2019)
 
 [Класс RegisterSet]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/tree/master/doc/metabit/register_set
 [Функция инициализации разрядов BitInit]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/tree/master/doc/metabit/register_set
@@ -28,3 +32,14 @@
 [Препроцессорный псевдо "цикл"]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/tree/master/doc/metabit/preprocessor
 [Заголовочные файлы с указателями на регистры МК AVR]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/tree/master/doc/avrdef_ptr
 [Примеры применения библиотеки]:https://github.com/Reifat/MetaBit_Lib_in_style_Cpp98/tree/master/example
+
+
+
+
+
+
+
+
+
+
+
