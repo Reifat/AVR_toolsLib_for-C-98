@@ -51,30 +51,33 @@ namespace mbl { // namespace meta bit library
 						return *this;
 					}
 					// Логические операторы
-					inline const ChangeBits& operator &=(const ChangeBits& right) const {
+					template<typename T>
+					inline const ChangeBits& operator &=(const T& right) const {
 						*_register &= (_Ty)right;
 						return *this;
 					}
-					inline		ChangeBits& operator &=(const ChangeBits& right) {
+					template<typename T>
+					inline		ChangeBits& operator &=(const T& right) {
 						return const_cast<ChangeBits&>(static_cast<const ChangeBits&>(*this).operator&=(right));
 					}
-					
-					inline const ChangeBits& operator|=(const ChangeBits& right) const {
+					template<typename T>
+					inline const ChangeBits& operator|=(const T& right) const {
 						*_register |= (_Ty)right;
 						return *this;
 					}
-					inline		ChangeBits& operator|=(const ChangeBits& right) {
+					template<typename T>
+					inline		ChangeBits& operator|=(const T& right) {
 						return const_cast<ChangeBits&>(static_cast<const ChangeBits&>(*this).operator|=(right));
 					}
-					
-					inline const ChangeBits& operator^=(const ChangeBits& right) const {
+					template<typename T>
+					inline const ChangeBits& operator^=(const T& right) const {
 						*_register ^= (_Ty)right;
 						return *this;
 					}
-					inline		ChangeBits& operator^=(const ChangeBits& right) {
+					template<typename T>
+					inline		ChangeBits& operator^=(const T& right) {
 						return const_cast<ChangeBits&>(static_cast<const ChangeBits&>(*this).operator^=(right));
 					}
-					
 					inline const ChangeBits& operator<<=(const size8_t& pos)const {
 						*_register <<= pos;
 						return *this;
@@ -88,33 +91,25 @@ namespace mbl { // namespace meta bit library
 					}
 					inline		 ChangeBits& operator>>=(const size8_t& pos) {
 						return const_cast<ChangeBits&>(static_cast<const ChangeBits&>(*this).operator>>=(pos));
-					}
+					} 
 					// Арифметические операторы
-					inline const ChangeBits& operator++()const { 
-						++(*_register); return *this;
+					inline const _Ty operator++()const { 
+						 return ++(*_register);;
 						 }
-					inline const ChangeBits& operator++(int)const { 
-						(*_register)++; return *this;
+					inline const _Ty operator++(int)const { 
+						_Ty temp = *_register;
+						(*_register)++;
+						 return temp;
 						 }
-					inline const ChangeBits& operator--()const {
-						 --(*_register); return *this;
-						  }
-					inline const ChangeBits& operator--(int)const {
-						 (*_register)--; return *this;
-						  }
-					inline ChangeBits& operator++() {
-						return const_cast<ChangeBits&>(static_cast<const ChangeBits&>(*this).operator++());
+					inline const _Ty operator--()const {
+						 return --(*_register);;
+					 }
+					inline const _Ty operator--(int)const {
+						_Ty temp = *_register;
+						(*_register)--;
+						return temp;
 					}
-					inline ChangeBits& operator++(int) {
-						return const_cast<ChangeBits&>(static_cast<const ChangeBits&>(*this).operator++(1));
-					}
-					inline  ChangeBits& operator--() {
-						return const_cast<ChangeBits&>(static_cast<const ChangeBits&>(*this).operator--());
-					}
-					inline ChangeBits& operator--(int) {
-						return const_cast<ChangeBits&>(static_cast<const ChangeBits&>(*this).operator--(1));
-					}	
-										  
+													  
 					template<typename T>
 					inline const ChangeBits& operator+=(const T& right)const { 
 						*_register += right; 
