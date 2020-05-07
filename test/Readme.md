@@ -10,6 +10,7 @@
      1. [ASM код AO]
   4. [Смешанный тест]
      1. [ASM код]
+  5. [Исходный код тестовых программ]
 ##### Итоговый результат
  ![Результаты]
 
@@ -25,5 +26,7 @@
 
 [Смешанный тест]:https://github.com/Reifat/MetaBitLibrary/tree/master/test/pictures/4.%20COMPLEX_TEST
 [ASM код]:https://github.com/Reifat/MetaBitLibrary/tree/master/test/asm_file
+
+[Исходный код тестовых программ]:https://github.com/Reifat/MetaBitLibrary/blob/master/test/main.cpp
 
 [Результаты]: https://github.com/Reifat/MetaBitLibrary/blob/master/test/pictures/Result_Test.PNG
