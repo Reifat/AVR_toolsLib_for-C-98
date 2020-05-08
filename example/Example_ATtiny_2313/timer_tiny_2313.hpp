@@ -2,8 +2,9 @@
 #define TIMER_H_
 // Simple timer TC0 for ATtiny2313
 
-#define  AVR_ATTINY
+#define  ATTINY_2313
 #include "metabit/metabit.hpp"
+#include "avrdef_ptr/avrdef_ptr.hpp"
 
 class Timer :public mbl::RegisterSet<mbl::reg8_t>::n_static_
 {
@@ -16,13 +17,13 @@ class Timer :public mbl::RegisterSet<mbl::reg8_t>::n_static_
 	
 	typedef mbl::RegisterSet<mbl::reg8_t>::n_static_ Parent;
 	public:
-	Timer():Parent(mcreg::TCNT0_c),
-	_ocr_a(mcreg::OCR0A_c),
-	_ocr_b(mcreg::OCR0B_c),
-	_tccr_a(mcreg::TCCR0A_c),
-	_tccr_b(mcreg::TCCR0B_c),
-	_timsk(mcreg::TIMSK_c),
-	_tifr(mcreg::TIFR_c)  {
+	Timer():Parent(mcreg::TCNT0_ptr),
+	_ocr_a(mcreg::OCR0A_ptr),
+	_ocr_b(mcreg::OCR0B_ptr),
+	_tccr_a(mcreg::TCCR0A_ptr),
+	_tccr_b(mcreg::TCCR0B_ptr),
+	_timsk(mcreg::TIMSK_ptr),
+	_tifr(mcreg::TIFR_ptr)  {
 		*Parent::_register  = 0;
 		*_ocr_a   = 0;
 		*_ocr_b   = 0;

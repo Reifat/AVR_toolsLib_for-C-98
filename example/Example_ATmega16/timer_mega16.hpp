@@ -1,7 +1,9 @@
 #ifndef TIMER_H_
 #define TIMER_H_
 
+#define  ATMEGA_16
 #include "metabit/metabit.hpp"
+#include "avrdef_ptr/avrdef_ptr.hpp"
 
 class Timer :public mbl::RegisterSet<mbl::reg8_t>::n_static_
 {
@@ -12,11 +14,11 @@ class Timer :public mbl::RegisterSet<mbl::reg8_t>::n_static_
 	
 	typedef mbl::RegisterSet<mbl::reg8_t>::n_static_ Parent;
 	public:
-	Timer():Parent(mcreg::tcnt_0_c),
-	_ocr(mcreg::ocr_0_c),
-	_tccr(mcreg::tccr_0_c),
-	_timsk(mcreg::timsk_c),
-	_tifr(mcreg::tifr_c)  {
+	Timer():Parent(mcreg::TCNT0_ptr),
+	_ocr(mcreg::OCR0_ptr),
+	_tccr(mcreg::TCCR0_ptr),
+	_timsk(mcreg::TIMSK_ptr),
+	_tifr(mcreg::TIFR_ptr)  {
 		*Parent::_register = 0;
 		*_ocr   = 0;
 		*_tccr  = 0;
