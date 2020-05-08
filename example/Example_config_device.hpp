@@ -1,4 +1,4 @@
-#ifndef CONFIG_DEVICE_HPP_
+п»ї#ifndef CONFIG_DEVICE_HPP_
 #define CONFIG_DEVICE_HPP_
 #include "timer.hpp"
 namespace conf{
@@ -32,13 +32,13 @@ ISR(TIMER0_COMPA_vect)
 
 int main(void)
 {
-	CMC::tmr.SetNormal();			  // Normal Mod  таймера
-	CMC::tmr.Divider(1024);			  // Предварительное деление частоты таймера 4МГц/1024
-	CMC::tmr.OCR_Set(0xFF);			  // Регистр сравнения равен 255
-	CMC::tmr.OnInterruptCoincidence(); // Разрешаем прерывание при совпадении
+	CMC::tmr.SetNormal();			  // Normal Mod  С‚Р°Р№РјРµСЂР°
+	CMC::tmr.Divider(1024);			  // РџСЂРµРґРІР°СЂРёС‚РµР»СЊРЅРѕРµ РґРµР»РµРЅРёРµ С‡Р°СЃС‚РѕС‚С‹ С‚Р°Р№РјРµСЂР° 4РњР“С†/1024
+	CMC::tmr.OCR_Set(0xFF);			  // Р РµРіРёСЃС‚СЂ СЃСЂР°РІРЅРµРЅРёСЏ СЂР°РІРµРЅ 255
+	CMC::tmr.OnInterruptCoincidence(); // Р Р°Р·СЂРµС€Р°РµРј РїСЂРµСЂС‹РІР°РЅРёРµ РїСЂРё СЃРѕРІРїР°РґРµРЅРёРё
 	
-	DDRB = 0xFF; // Порт А работает на вывод тока
-	DDRD = 0x00; // Порт C работает как токовый приемник
+	DDRB = 0xFF; // РџРѕСЂС‚ Рђ СЂР°Р±РѕС‚Р°РµС‚ РЅР° РІС‹РІРѕРґ С‚РѕРєР°
+	DDRD = 0x00; // РџРѕСЂС‚ C СЂР°Р±РѕС‚Р°РµС‚ РєР°Рє С‚РѕРєРѕРІС‹Р№ РїСЂРёРµРјРЅРёРє
 	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 	mbl::size16_t busic_loop = 2;
 	mbl::size16_t next_set = busic_loop;

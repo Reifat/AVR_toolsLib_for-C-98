@@ -1,7 +1,7 @@
-/*
- * Автор Reifat
+п»ї/*
+ * РђРІС‚РѕСЂ Reifat
  * GitHub Repository - https://github.com/Reifat
- * Последние изменения 30.04.2020.
+ * РџРѕСЃР»РµРґРЅРёРµ РёР·РјРµРЅРµРЅРёСЏ 30.04.2020.
 */
 #ifndef TYPE_TRAITS_HPP
 #define TYPE_TRAITS_HPP
@@ -53,23 +53,23 @@ namespace mbl // namespace meta bit library
 		typedef TailTy Tail;
 	};
 
-	//** Извлечение 1го элемента из списка
+	//** РР·РІР»РµС‡РµРЅРёРµ 1РіРѕ СЌР»РµРјРµРЅС‚Р° РёР· СЃРїРёСЃРєР°
 	template<typename List>
 	struct FrontType
 	{
 		typedef typename List::Head Type;
 	};
-	//** Добавление элемента в начало списка
+	//** Р”РѕР±Р°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РІ РЅР°С‡Р°Р»Рѕ СЃРїРёСЃРєР°
 	template<typename List, typename Element>
 	struct PushFrontType : public  TList<Element, List>
 	{};
-	//** Удаление 1го элемента списка
+	//** РЈРґР°Р»РµРЅРёРµ 1РіРѕ СЌР»РµРјРµРЅС‚Р° СЃРїРёСЃРєР°
 	template<typename List>
 	struct PopFrontType
 	{
 		typedef typename List::Tail Type;
 	};
-	//** Проверка, пустой список или нет
+	//** РџСЂРѕРІРµСЂРєР°, РїСѓСЃС‚РѕР№ СЃРїРёСЃРѕРє РёР»Рё РЅРµС‚
 	template<typename List>
 	class IsEmpty
 	{
@@ -83,23 +83,23 @@ namespace mbl // namespace meta bit library
 		static const bool Value = true;
 	};
 
-	// Добавление элемента в конец списка
+	// Р”РѕР±Р°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РІ РєРѕРЅРµС† СЃРїРёСЃРєР°
 	template<typename List, typename NewElement, bool empty = IsEmpty<List>::Value>
 	class PushBack;
-	// Рекурсивный случай
+	// Р РµРєСѓСЂСЃРёРІРЅС‹Р№ СЃР»СѓС‡Р°Р№
 	template<typename List, typename NewElement>
 	class PushBack<List, NewElement, false>
 	{
 	private:
-		// Деструктурирование списка типов
+		// Р”РµСЃС‚СЂСѓРєС‚СѓСЂРёСЂРѕРІР°РЅРёРµ СЃРїРёСЃРєР° С‚РёРїРѕРІ
 		typedef typename FrontType<List>::Type Head;
 		typedef typename PopFrontType<List>::Type Teil;
-		// Структурирование нового списка типов
+		// РЎС‚СЂСѓРєС‚СѓСЂРёСЂРѕРІР°РЅРёРµ РЅРѕРІРѕРіРѕ СЃРїРёСЃРєР° С‚РёРїРѕРІ
 		typedef typename PushBack<Teil, NewElement>::Type NewTail;
 	public:
 		typedef typename PushFrontType<NewTail, Head>::Type Type;
 	};
-	// Базовый случай
+	// Р‘Р°Р·РѕРІС‹Р№ СЃР»СѓС‡Р°Р№
 	template<typename NewElement>
 	class PushBack<Nil, NewElement, true>
 	{
@@ -107,7 +107,7 @@ namespace mbl // namespace meta bit library
 		typedef typename PushFrontType<Nil, NewElement>::Type Type;
 	};
 
-	// Размер списка типов
+	// Р Р°Р·РјРµСЂ СЃРїРёСЃРєР° С‚РёРїРѕРІ
 	template<class TList, bool Empty = IsEmpty<TList>::Value>
 	class SizeTList;
 	template<class TList>
@@ -124,9 +124,9 @@ namespace mbl // namespace meta bit library
 		enum { value = 0 };
 	};
 	//***************************************************************************************************************
-	// Алгоритм индексации по списку типов
+	// РђР»РіРѕСЂРёС‚Рј РёРЅРґРµРєСЃР°С†РёРё РїРѕ СЃРїРёСЃРєСѓ С‚РёРїРѕРІ
 
-	// Получение N-й головы списка типа
+	// РџРѕР»СѓС‡РµРЅРёРµ N-Р№ РіРѕР»РѕРІС‹ СЃРїРёСЃРєР° С‚РёРїР°
 	template<typename List, size_t N, typename defT = Nil, bool Empty = IsEmpty<List>::Value>
 	class NthElement;
 
@@ -150,7 +150,7 @@ namespace mbl // namespace meta bit library
 	public:
 		typedef defT Element;
 	};
-	// Получение N-го хвоста списка типов
+	// РџРѕР»СѓС‡РµРЅРёРµ N-РіРѕ С…РІРѕСЃС‚Р° СЃРїРёСЃРєР° С‚РёРїРѕРІ
 	template<typename List, size_t N, typename defT = Nil, bool Empty = IsEmpty<List>::Value>
 	class NthTeil;
 	template<typename List, size_t N, typename defT>
@@ -174,7 +174,7 @@ namespace mbl // namespace meta bit library
 		typedef defT Element;
 	};
 	//***************************************************************************************************************
-	// Алгоритм поиска наибольшего типа в списке
+	// РђР»РіРѕСЂРёС‚Рј РїРѕРёСЃРєР° РЅР°РёР±РѕР»СЊС€РµРіРѕ С‚РёРїР° РІ СЃРїРёСЃРєРµ
 	template<typename List, bool Empty = IsEmpty<List>::Value>
 	class LargestTypeT;
 	template<typename List>
@@ -194,20 +194,20 @@ namespace mbl // namespace meta bit library
 		typedef char Type;
 	};
 	//***************************************************************************************************************
-	// Алгоритм сортировки вставками списка типов
+	// РђР»РіРѕСЂРёС‚Рј СЃРѕСЂС‚РёСЂРѕРІРєРё РІСЃС‚Р°РІРєР°РјРё СЃРїРёСЃРєР° С‚РёРїРѕРІ
 
-	template<typename T, typename U> // Условная функция сравнения элементов
+	template<typename T, typename U> // РЈСЃР»РѕРІРЅР°СЏ С„СѓРЅРєС†РёСЏ СЃСЂР°РІРЅРµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ
 	struct Compare
 	{
 		static const bool Result = sizeof(T) < sizeof(U);
 	};
-	// Ядро сортировки  //********************************************************************************************
+	// РЇРґСЂРѕ СЃРѕСЂС‚РёСЂРѕРІРєРё  //********************************************************************************************
 	template<typename List, typename Element,
 		template<typename T, typename U>class Compare,
 		bool Empty = IsEmpty<List>::Value>
 		class InsertSortedT;
 
-	// Рекурсивный случай :
+	// Р РµРєСѓСЂСЃРёРІРЅС‹Р№ СЃР»СѓС‡Р°Р№ :
 	template<typename List, typename Element,
 		template<typename T, typename U>class Compare>
 	class InsertSortedT<List, Element, Compare, false>
@@ -216,14 +216,14 @@ namespace mbl // namespace meta bit library
 		typedef typename PopFrontType<List>::Type _PopFront;
 		typedef typename InsertSortedT<_PopFront, Element, Compare>::Type RecursiveCall;
 		static const bool _ValCompare = Compare<Element, _Front>::Result;
-		// Вычисляем хвоста результирующего списка:
+		// Р’С‹С‡РёСЃР»СЏРµРј С…РІРѕСЃС‚Р° СЂРµР·СѓР»СЊС‚РёСЂСѓСЋС‰РµРіРѕ СЃРїРёСЃРєР°:
 		typedef typename IfThenElseType<_ValCompare, List, RecursiveCall>::Type NewTail;
-		// Вычисляем головы результирующего списка:
+		// Р’С‹С‡РёСЃР»СЏРµРј РіРѕР»РѕРІС‹ СЂРµР·СѓР»СЊС‚РёСЂСѓСЋС‰РµРіРѕ СЃРїРёСЃРєР°:
 		typedef typename IfThenElseType<_ValCompare, Element, _Front>::Type NewHead;
 	public:
 		typedef typename PushFrontType<NewTail, NewHead>::Type Type;
 	};
-	// Базовый случай :
+	// Р‘Р°Р·РѕРІС‹Р№ СЃР»СѓС‡Р°Р№ :
 	template<typename List, typename Element,
 		template<typename T, typename U>class Compare>
 	class InsertSortedT<List, Element, Compare, true>
@@ -232,13 +232,13 @@ namespace mbl // namespace meta bit library
 		typedef typename PushFrontType<List, Element>::Type Type;
 	};
 
-	// Интерфейс сортировки //*****************************************************************************************
+	// РРЅС‚РµСЂС„РµР№СЃ СЃРѕСЂС‚РёСЂРѕРІРєРё //*****************************************************************************************
 	template<typename List,
 		template<typename T, typename U> class Compare,
 		bool Empty = IsEmpty<List>::Value>
 		class InsertionSortT;
-	// Рекурсивный случай (Вставка первого элемент 
-	// в отсортированный список):
+	// Р РµРєСѓСЂСЃРёРІРЅС‹Р№ СЃР»СѓС‡Р°Р№ (Р’СЃС‚Р°РІРєР° РїРµСЂРІРѕРіРѕ СЌР»РµРјРµРЅС‚ 
+	// РІ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ СЃРїРёСЃРѕРє):
 	template<typename List,
 		template<typename T, typename U> class Compare>
 	class InsertionSortT<List, Compare, false>
@@ -249,7 +249,7 @@ namespace mbl // namespace meta bit library
 	public:
 		typedef typename InsertSortedT<RecursiveCall, _Front, Compare>::Type Type;
 	};
-	// Базовый случай (пустой список является отсортированным):
+	// Р‘Р°Р·РѕРІС‹Р№ СЃР»СѓС‡Р°Р№ (РїСѓСЃС‚РѕР№ СЃРїРёСЃРѕРє СЏРІР»СЏРµС‚СЃСЏ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Рј):
 	template<typename List,
 		template<typename T, typename U> class Compare>
 	class InsertionSortT<List, Compare, true>

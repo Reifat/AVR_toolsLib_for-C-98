@@ -1,7 +1,7 @@
-/* Базовый класс для RegisterSet
- * Автор Reifat
+п»ї/* Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ РґР»СЏ RegisterSet
+ * РђРІС‚РѕСЂ Reifat
  * GitHub Repository - https://github.com/Reifat
- * Последние изменения 30.04.2020.
+ * РџРѕСЃР»РµРґРЅРёРµ РёР·РјРµРЅРµРЅРёСЏ 30.04.2020.
 */
 
 #ifndef BASIC_REGISTER_SET_HPP
@@ -26,10 +26,10 @@ namespace mbl { // namespace meta bit library
 				class ChangeBits  // basic class for RegisterSet
 				{
 					public:
-					// Конструктор / Designer
+					// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ / Designer
 					ChangeBits(_Ty* Register) : _register(Register) { }
 					// basic operators * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
-					// Операторы присвоения
+					// РћРїРµСЂР°С‚РѕСЂС‹ РїСЂРёСЃРІРѕРµРЅРёСЏ
 					template<typename T>
 					inline const ChangeBits& operator=(T val)const {
 						*_register = (_Ty)val;
@@ -50,7 +50,7 @@ namespace mbl { // namespace meta bit library
 						_register = new_addres;
 						return *this;
 					}
-					// Логические операторы
+					// Р›РѕРіРёС‡РµСЃРєРёРµ РѕРїРµСЂР°С‚РѕСЂС‹
 					template<typename T>
 					inline const ChangeBits& operator &=(const T& right) const {
 						*_register &= (_Ty)right;
@@ -92,7 +92,7 @@ namespace mbl { // namespace meta bit library
 					inline		 ChangeBits& operator>>=(const size8_t& pos) {
 						return const_cast<ChangeBits&>(static_cast<const ChangeBits&>(*this).operator>>=(pos));
 					} 
-					// Арифметические операторы
+					// РђСЂРёС„РјРµС‚РёС‡РµСЃРєРёРµ РѕРїРµСЂР°С‚РѕСЂС‹
 					inline const _Ty operator++()const { 
 						 return ++(*_register);;
 						 }
@@ -156,7 +156,7 @@ namespace mbl { // namespace meta bit library
 						return const_cast<ChangeBits&>(static_cast<const ChangeBits&>(*this).operator%=(right));
 					}
 					// metodth * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-					// Изменение адреса указателя
+					// РР·РјРµРЅРµРЅРёРµ Р°РґСЂРµСЃР° СѓРєР°Р·Р°С‚РµР»СЏ
 					inline ChangeBits& ChangeAddres(_Ty* new_addres) {
 						_register = new_addres;
 						return *this;
@@ -164,7 +164,7 @@ namespace mbl { // namespace meta bit library
 					inline const _Ty GetValue()const {
 						return *_register;
 					}
-					// Установка или сброс с разряда a по b
+					// РЈСЃС‚Р°РЅРѕРІРєР° РёР»Рё СЃР±СЂРѕСЃ СЃ СЂР°Р·СЂСЏРґР° a РїРѕ b
 					inline const ChangeBits& SetInRange(const size8_t &at, const size8_t &to, bool val = true)const {
 						*_register = SetInRange(*_register, at, to, val);
 						return *this;
@@ -180,7 +180,7 @@ namespace mbl { // namespace meta bit library
 					inline		 ChangeBits& SetInPos(const size8_t &pos, const bool &val = true) {
 						return const_cast<ChangeBits&>(static_cast<const ChangeBits&>(*this).SetInPos(pos,val));
 					}
-					// Установка или сброс всех битов в регистре
+					// РЈСЃС‚Р°РЅРѕРІРєР° РёР»Рё СЃР±СЂРѕСЃ РІСЃРµС… Р±РёС‚РѕРІ РІ СЂРµРіРёСЃС‚СЂРµ
 					inline const ChangeBits& Set(bool val = true)const {
 						*_register = (_Ty)(-val);;
 						return *this;
@@ -188,7 +188,7 @@ namespace mbl { // namespace meta bit library
 					inline		 ChangeBits& Set(bool val = true) {
 						return const_cast<ChangeBits&>(static_cast<const ChangeBits&>(*this).Set(val));
 					}
-					// Сброс всех битов
+					// РЎР±СЂРѕСЃ РІСЃРµС… Р±РёС‚РѕРІ
 					inline const ChangeBits& Reset() const	{
 						*_register = (_Ty)0;
 						return *this;
@@ -196,23 +196,23 @@ namespace mbl { // namespace meta bit library
 					inline ChangeBits& Reset() {
 						return const_cast<ChangeBits&>(static_cast<const ChangeBits&>(*this).Reset());
 					}
-					// Проверяет, чтобы все биты были установлены в true
+					// РџСЂРѕРІРµСЂСЏРµС‚, С‡С‚РѕР±С‹ РІСЃРµ Р±РёС‚С‹ Р±С‹Р»Рё СѓСЃС‚Р°РЅРѕРІР»РµРЅС‹ РІ true
 					inline const bool All()const {
 						return (*_register & ~(_Ty)0);
 					}
-					// Проверяет, чтобы хотя бы один бит был установлен в true
+					// РџСЂРѕРІРµСЂСЏРµС‚, С‡С‚РѕР±С‹ С…РѕС‚СЏ Р±С‹ РѕРґРёРЅ Р±РёС‚ Р±С‹Р» СѓСЃС‚Р°РЅРѕРІР»РµРЅ РІ true
 					inline const bool Any()const 	{
 						return (*_register != (_Ty)0);
 					}
-					// Проверяет, чтобы никакой из битов не был установлен в true
+					// РџСЂРѕРІРµСЂСЏРµС‚, С‡С‚РѕР±С‹ РЅРёРєР°РєРѕР№ РёР· Р±РёС‚РѕРІ РЅРµ Р±С‹Р» СѓСЃС‚Р°РЅРѕРІР»РµРЅ РІ true
 					inline const bool None()const {
 						return !Any();
 					}
-					// Возвращает размер регистра
+					// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЂР°Р·РјРµСЂ СЂРµРіРёСЃС‚СЂР°
 					inline const size8_t size()const {
 						return SizeTy<_Ty>::_Size;
 					}
-					// Инвертирует все биты
+					// РРЅРІРµСЂС‚РёСЂСѓРµС‚ РІСЃРµ Р±РёС‚С‹
 					inline const ChangeBits& Flip()const {
 						*_register = ~(*_register);
 						return *this;
@@ -220,7 +220,7 @@ namespace mbl { // namespace meta bit library
 					inline ChangeBits& Flip() {
 						return const_cast<ChangeBits&>(static_cast<const ChangeBits&>(*this).Flip());
 					}
-					// Возвращает количество битов, которые установлены в true
+					// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ Р±РёС‚РѕРІ, РєРѕС‚РѕСЂС‹Рµ СѓСЃС‚Р°РЅРѕРІР»РµРЅС‹ РІ true
 					inline const size8_t count()const {
 						return mbl::Count<_Ty>(*_register);
 					}

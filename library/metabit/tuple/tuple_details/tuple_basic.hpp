@@ -1,4 +1,4 @@
-#ifndef METABIT_TUPLE_BASIC_HPP
+п»ї#ifndef METABIT_TUPLE_BASIC_HPP
 #define METABIT_TUPLE_BASIC_HPP
 
 #include "metabit\type_traits\type_traits.hpp"
@@ -474,7 +474,7 @@ namespace mbl // namespace meta bit library
 			typedef Nil Inherited;
 		};
 
-		// Фрагмент кода взят из библиотеки - boost (Автор Doug Gregor)
+		// Р¤СЂР°РіРјРµРЅС‚ РєРѕРґР° РІР·СЏС‚ РёР· Р±РёР±Р»РёРѕС‚РµРєРё - boost (РђРІС‚РѕСЂ Doug Gregor)
 		// The code snippet is taken from the library - boost (by Doug Gregor)
 		// Swallows any assignment  
 		namespace detail {

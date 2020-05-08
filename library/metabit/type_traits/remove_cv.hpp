@@ -1,7 +1,7 @@
-/*
- * Автор модификаций Reifat
+п»ї/*
+ * РђРІС‚РѕСЂ РјРѕРґРёС„РёРєР°С†РёР№ Reifat
  * GitHub Repository - https://github.com/Reifat
- * Последние изменения 30.04.2020.
+ * РџРѕСЃР»РµРґРЅРёРµ РёР·РјРµРЅРµРЅРёСЏ 30.04.2020.
 */
 #ifndef REMOVE_CV_HPP
 #define REMOVE_CV_HPP
@@ -9,7 +9,7 @@
 namespace mbl // namespace meta bit library 
 {
 
-    // remove_cv.hpp - взят из библиотеки boost(внесена упрощающая модификация);
+    // remove_cv.hpp - РІР·СЏС‚ РёР· Р±РёР±Р»РёРѕС‚РµРєРё boost(РІРЅРµСЃРµРЅР° СѓРїСЂРѕС‰Р°СЋС‰Р°СЏ РјРѕРґРёС„РёРєР°С†РёСЏ);
     //  (C) Copyright Dave Abrahams, Steve Cleary, Beman Dawes, Howard
     //  Hinnant & John Maddock 2000. 
 

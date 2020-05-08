@@ -1,4 +1,4 @@
-#ifndef TIMER_H_
+п»ї#ifndef TIMER_H_
 #define TIMER_H_
 
 #define  ATMEGA_16
@@ -61,19 +61,19 @@ class Timer :public mbl::RegisterSet<mbl::reg8_t>::n_static_
 			break;
 		}
 	}
-	inline void OCR_OffOut() const{ // Отключить вывод OCR
+	inline void OCR_OffOut() const{ // РћС‚РєР»СЋС‡РёС‚СЊ РІС‹РІРѕРґ OCR
 		*_tccr &= ~(1 << 4); // COM00 reset
 		*_tccr &= ~(1 << 5); // COM01 reset
 	}
-	inline void OCR_FlipOut_If_Match() const{ // Изменить вывод OCR на противоположное в момент совпадения
+	inline void OCR_FlipOut_If_Match() const{ // РР·РјРµРЅРёС‚СЊ РІС‹РІРѕРґ OCR РЅР° РїСЂРѕС‚РёРІРѕРїРѕР»РѕР¶РЅРѕРµ РІ РјРѕРјРµРЅС‚ СЃРѕРІРїР°РґРµРЅРёСЏ
 		*_tccr |=  (1 << 4); // COM00 set
 		*_tccr &= ~(1 << 5); // COM01 reset
 	}
-	inline void OCR_SetOut_If_Match() const{ // Установить вывод OCR в момент совпадения
+	inline void OCR_SetOut_If_Match() const{ // РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РІС‹РІРѕРґ OCR РІ РјРѕРјРµРЅС‚ СЃРѕРІРїР°РґРµРЅРёСЏ
 		*_tccr &= ~(1 << 4); // COM00 reset
 		*_tccr |=  (1 << 5); // COM01 set
 	}
-	inline void OCR_ResetOut_If_Match() const{ // Сбросить вывод OCR в момент совпадения
+	inline void OCR_ResetOut_If_Match() const{ // РЎР±СЂРѕСЃРёС‚СЊ РІС‹РІРѕРґ OCR РІ РјРѕРјРµРЅС‚ СЃРѕРІРїР°РґРµРЅРёСЏ
 		*_tccr |= (1 << 4); // COM00 set
 		*_tccr |= (1 << 5); // COM01 set
 	}

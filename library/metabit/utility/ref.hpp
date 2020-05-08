@@ -1,9 +1,9 @@
-/* Reference_Wrapper
- * Упрощенная версия из boost
+п»ї/* Reference_Wrapper
+ * РЈРїСЂРѕС‰РµРЅРЅР°СЏ РІРµСЂСЃРёСЏ РёР· boost
  *
- * Автор модификаций Reifat
+ * РђРІС‚РѕСЂ РјРѕРґРёС„РёРєР°С†РёР№ Reifat
  * GitHub Repository - https://github.com/Reifat
- * Последние изменения 30.04.2020.
+ * РџРѕСЃР»РµРґРЅРёРµ РёР·РјРµРЅРµРЅРёСЏ 30.04.2020.
 */
 
 #ifndef REFERENCE_WRAPPER_HPP

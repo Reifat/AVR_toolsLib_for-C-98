@@ -1,6 +1,6 @@
-Реализация nulptr взята у автора github репозитория 
+п»їР РµР°Р»РёР·Р°С†РёСЏ nulptr РІР·СЏС‚Р° Сѓ Р°РІС‚РѕСЂР° github СЂРµРїРѕР·РёС‚РѕСЂРёСЏ 
 "Aleksandr oktonion" 
-ссылка на репозиторий его github https://github.com/oktonion
-ссылка на его статью о nulptr    https://habr.com/ru/post/417295/
-ссылка на проект автора, из которого был взят nulptr
+СЃСЃС‹Р»РєР° РЅР° СЂРµРїРѕР·РёС‚РѕСЂРёР№ РµРіРѕ github https://github.com/oktonion
+СЃСЃС‹Р»РєР° РЅР° РµРіРѕ СЃС‚Р°С‚СЊСЋ Рѕ nulptr    https://habr.com/ru/post/417295/
+СЃСЃС‹Р»РєР° РЅР° РїСЂРѕРµРєС‚ Р°РІС‚РѕСЂР°, РёР· РєРѕС‚РѕСЂРѕРіРѕ Р±С‹Р» РІР·СЏС‚ nulptr
  https://github.com/oktonion/stdex/tree/master/stdex

@@ -1,7 +1,7 @@
-/* Вспомогательные макросы/структуры для класса debug RegisterSet
- * Автор Reifat
+п»ї/* Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Рµ РјР°РєСЂРѕСЃС‹/СЃС‚СЂСѓРєС‚СѓСЂС‹ РґР»СЏ РєР»Р°СЃСЃР° debug RegisterSet
+ * РђРІС‚РѕСЂ Reifat
  * GitHub Repository - https://github.com/Reifat
- * Последние изменения 30.04.2020.
+ * РџРѕСЃР»РµРґРЅРёРµ РёР·РјРµРЅРµРЅРёСЏ 30.04.2020.
 */
 
 #ifndef DEBUG_DETAIL_REGISTER_SET_HPP
@@ -20,7 +20,7 @@
 												mbl::TestType<_Ty, mbl::int32_t >::result   |	\
 												mbl::TestType<_Ty, mbl::int64_t >::result;		\
 						STATIC_ASSERT( testType==true , INVALID_TYPES_ENTERED_VALID_TYPES_##mess)
-// Macro for check tolerance range / Проверка на допустимый диапазон
+// Macro for check tolerance range / РџСЂРѕРІРµСЂРєР° РЅР° РґРѕРїСѓСЃС‚РёРјС‹Р№ РґРёР°РїР°Р·РѕРЅ
 #define CHECKRANGE(Ty,Pos) STATIC_ASSERT((detail::CheckRenge<Ty,Pos>::Result), OUT_OF_RANGE_REGISTER)
 #define D_AT(pos)	Cell_Function(mbl::ETVal<mbl::size_t, pos>(),0)
 #define D_LAS(pos)	Cell_Function(mbl::ETVal<mbl::size_t, pos>(),1)
@@ -31,12 +31,12 @@
 namespace mbl{
 	namespace d_rs{
 		namespace detail{
-			// Проверка введенного диапазона
+			// РџСЂРѕРІРµСЂРєР° РІРІРµРґРµРЅРЅРѕРіРѕ РґРёР°РїР°Р·РѕРЅР°
 			template<typename T, mbl::size8_t _Pos>
 			struct CheckRenge { // need for debug version RegisterSet
 				static const bool Result = ((sizeof(T) * 8) > _Pos);
 			};
-			// Установка класса родителя
+			// РЈСЃС‚Р°РЅРѕРІРєР° РєР»Р°СЃСЃР° СЂРѕРґРёС‚РµР»СЏ
 			template<typename Ty>
 			struct Parent{
 				typedef mbl::rs::s_rs::RegisterSet<Ty>    static_;

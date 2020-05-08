@@ -1,8 +1,8 @@
-/*
- * Реализация nulptr взята у автора github репозитория
+п»ї/*
+ * Р РµР°Р»РёР·Р°С†РёСЏ nulptr РІР·СЏС‚Р° Сѓ Р°РІС‚РѕСЂР° github СЂРµРїРѕР·РёС‚РѕСЂРёСЏ
  * "Aleksandr oktonion"
- * ссылка на репозиторий его github https://github.com/oktonion
- * модификацыя Reifat
+ * СЃСЃС‹Р»РєР° РЅР° СЂРµРїРѕР·РёС‚РѕСЂРёР№ РµРіРѕ github https://github.com/oktonion
+ * РјРѕРґРёС„РёРєР°С†С‹СЏ Reifat
  * GitHub Repository - https://github.com/Reifat
 */
 #ifndef NULLPTR_HPP

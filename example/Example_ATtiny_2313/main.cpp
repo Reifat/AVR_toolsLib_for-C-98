@@ -1,36 +1,36 @@
-// Example RuningLed on ATtiny 2313
+п»ї// Example RuningLed on ATtiny 2313
 #include "avr/interrupt.h"
 #include "timer_tiny_2313.hpp"
 
-mbl::size16_t clk = 0;		 // Счетчик делителя программного таймера
-mbl::size16_t delay_clk = 0; // Счетчик задержки
+mbl::size16_t clk = 0;		 // РЎС‡РµС‚С‡РёРє РґРµР»РёС‚РµР»СЏ РїСЂРѕРіСЂР°РјРјРЅРѕРіРѕ С‚Р°Р№РјРµСЂР°
+mbl::size16_t delay_clk = 0; // РЎС‡РµС‚С‡РёРє Р·Р°РґРµСЂР¶РєРё
 bool delay_flag = false;
 
 ISR(TIMER0_OVF_vect)
 {
 	clk++;
-	if (delay_flag) // Если флаг задержки поднят
+	if (delay_flag) // Р•СЃР»Рё С„Р»Р°Рі Р·Р°РґРµСЂР¶РєРё РїРѕРґРЅСЏС‚
 		delay_clk++;
-	if(delay_clk >= 122) // Если счетчик переполнен, опускаем флаг
+	if(delay_clk >= 122) // Р•СЃР»Рё СЃС‡РµС‚С‡РёРє РїРµСЂРµРїРѕР»РЅРµРЅ, РѕРїСѓСЃРєР°РµРј С„Р»Р°Рі
 		delay_flag = false;
 }
 
 int main(void)
 {
-	// Инициализация регистров МК
+	// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЂРµРіРёСЃС‚СЂРѕРІ РњРљ
 	Timer tmr;
 	mbl::RegisterSet<mbl::reg8_t>::n_static_ port_out(mcreg::PORTB_ptr);
 	mbl::RegisterSet<mbl::reg8_t>::n_static_ pin_in(mcreg::PIND_ptr);
 	
-	tmr.SetNormal();			  // Normal Mod  таймера
-	tmr.Divider(64);			  // Предварительное деление частоты таймера 4МГц/64
-	tmr.OnInterruptOverflow();    // Разрешаем прерывание при переполнении
+	tmr.SetNormal();			  // Normal Mod  С‚Р°Р№РјРµСЂР°
+	tmr.Divider(64);			  // РџСЂРµРґРІР°СЂРёС‚РµР»СЊРЅРѕРµ РґРµР»РµРЅРёРµ С‡Р°СЃС‚РѕС‚С‹ С‚Р°Р№РјРµСЂР° 4РњР“С†/64
+	tmr.OnInterruptOverflow();    // Р Р°Р·СЂРµС€Р°РµРј РїСЂРµСЂС‹РІР°РЅРёРµ РїСЂРё РїРµСЂРµРїРѕР»РЅРµРЅРёРё
 	
-	DDRB = 0xFF; // Порт B работает на вывод тока
-	DDRD = 0x00; // Порт D работает как токовый приемник
+	DDRB = 0xFF; // РџРѕСЂС‚ B СЂР°Р±РѕС‚Р°РµС‚ РЅР° РІС‹РІРѕРґ С‚РѕРєР°
+	DDRD = 0x00; // РџРѕСЂС‚ D СЂР°Р±РѕС‚Р°РµС‚ РєР°Рє С‚РѕРєРѕРІС‹Р№ РїСЂРёРµРјРЅРёРє
 	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-	mbl::size16_t loop = 512;		// Программный делитель счетчика счетчика 4МГц/64/256/512 = 0,47Гц
-	mbl::size16_t now_loop = loop;  // Действующий делитель счетчика
+	mbl::size16_t loop = 512;		// РџСЂРѕРіСЂР°РјРјРЅС‹Р№ РґРµР»РёС‚РµР»СЊ СЃС‡РµС‚С‡РёРєР° СЃС‡РµС‚С‡РёРєР° 4РњР“С†/64/256/512 = 0,47Р“С†
+	mbl::size16_t now_loop = loop;  // Р”РµР№СЃС‚РІСѓСЋС‰РёР№ РґРµР»РёС‚РµР»СЊ СЃС‡РµС‚С‡РёРєР°
 
 	port_out[0] = 1;
 	while(true){
@@ -38,11 +38,11 @@ int main(void)
 			if(port_out.GetValue() == 0x80)
 				port_out = 1;
 			else
-				port_out <<= 1; // Переключить LED диода
+				port_out <<= 1; // РџРµСЂРµРєР»СЋС‡РёС‚СЊ LED РґРёРѕРґР°
 			clk = 0;
 		}
 		if ( mbl::OnlySingleTrue(pin_in.GetValue()) && (!delay_flag) ) {
-			delay_flag = true; // Поднять флаг задержки
+			delay_flag = true; // РџРѕРґРЅСЏС‚СЊ С„Р»Р°Рі Р·Р°РґРµСЂР¶РєРё
 			now_loop = loop >> mbl::ilog2(pin_in.GetValue());
 			clk = 0;
 		}

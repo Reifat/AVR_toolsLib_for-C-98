@@ -1,7 +1,7 @@
-/* Библиотека Meta Bit Library
- * Автор Reifat
+п»ї/* Р‘РёР±Р»РёРѕС‚РµРєР° Meta Bit Library
+ * РђРІС‚РѕСЂ Reifat
  * GitHub Repository - https://github.com/Reifat
- * Последние изменения 30.04.2020.
+ * РџРѕСЃР»РµРґРЅРёРµ РёР·РјРµРЅРµРЅРёСЏ 30.04.2020.
 */
 
 #ifndef METABIT_HPP

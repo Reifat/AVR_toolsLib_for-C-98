@@ -1,7 +1,7 @@
-/* Класса debug RegisterSet
- * Автор Reifat
+п»ї/* РљР»Р°СЃСЃР° debug RegisterSet
+ * РђРІС‚РѕСЂ Reifat
  * GitHub Repository - https://github.com/Reifat
- * Последние изменения 30.04.2020.
+ * РџРѕСЃР»РµРґРЅРёРµ РёР·РјРµРЅРµРЅРёСЏ 30.04.2020.
 */
 
 #ifndef DEBUG_REGISTER_SET_HPP
@@ -45,7 +45,7 @@ namespace mbl{
 					typename detail::Parent<_Ty>::n_static_ ,
 					typename detail::Parent<_Ty>::  static_ >::Type Parent;
 			public:
-			// Конструктор // Constructor
+			// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ // Constructor
 			RegisterSet(_Ty* ptr):Parent(ptr){
 				CHECKTYPE(ALL_signed_and_unsigned_integer_types);
 			 }

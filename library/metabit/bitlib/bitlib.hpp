@@ -1,7 +1,7 @@
-/* Библиотека для работы с разрядами
- * Автор Reifat
+п»ї/* Р‘РёР±Р»РёРѕС‚РµРєР° РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ СЂР°Р·СЂСЏРґР°РјРё
+ * РђРІС‚РѕСЂ Reifat
  * GitHub Repository - https://github.com/Reifat
- * Последние изменения 30.04.2020.
+ * РџРѕСЃР»РµРґРЅРёРµ РёР·РјРµРЅРµРЅРёСЏ 30.04.2020.
 */
 #ifndef BITLIB_HPP
 #define BITLIB_HPP
@@ -19,14 +19,14 @@ namespace mbl // namespace meta bit library
 		static const size8_t _Size = sizeof(T) * 8;
 	};
 	
-	// Проверка, чтобы был установлен разряд n в лог.1;
+	// РџСЂРѕРІРµСЂРєР°, С‡С‚РѕР±С‹ Р±С‹Р» СѓСЃС‚Р°РЅРѕРІР»РµРЅ СЂР°Р·СЂСЏРґ n РІ Р»РѕРі.1;
 	template<typename T>
 	inline bool IsBitSet(T val, size8_t n) 
 	{
 		return (val & (1 << n)) != 0;
 	}
 	
-	// Обнулить бит с номером n;
+	// РћР±РЅСѓР»РёС‚СЊ Р±РёС‚ СЃ РЅРѕРјРµСЂРѕРј n;
 	template<typename T>
 	bool BitOff(T val, size8_t n)
 	{
@@ -40,7 +40,7 @@ namespace mbl // namespace meta bit library
 		return (x ^ (x >> SizeTy<T>::_Size - 1)) - (x >> SizeTy<T>::_Size - 1);
 	}
 	
-	// Подсчет количества бит установленных в лог.1;
+	// РџРѕРґСЃС‡РµС‚ РєРѕР»РёС‡РµСЃС‚РІР° Р±РёС‚ СѓСЃС‚Р°РЅРѕРІР»РµРЅРЅС‹С… РІ Р»РѕРі.1;
 	namespace detail {
 		template<typename T, size8_t N = SizeTy<T>::_Size>
 		struct Count_8
@@ -63,14 +63,14 @@ namespace mbl // namespace meta bit library
 			}
 		};
 	}
-	// Возвращает количество битов, которые установлены в true;
+	// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ Р±РёС‚РѕРІ, РєРѕС‚РѕСЂС‹Рµ СѓСЃС‚Р°РЅРѕРІР»РµРЅС‹ РІ true;
 	template<typename _Ty>
 	size8_t Count(_Ty x)
 	{
 		return detail::Count_8<_Ty>::Result(x);
 	}
 	
-	// Установить лог.1 во всех разрядах после первой лог. 1цы
+	// РЈСЃС‚Р°РЅРѕРІРёС‚СЊ Р»РѕРі.1 РІРѕ РІСЃРµС… СЂР°Р·СЂСЏРґР°С… РїРѕСЃР»Рµ РїРµСЂРІРѕР№ Р»РѕРі. 1С†С‹
 	namespace detail
 	{
 		template<typename T, size8_t N = 1, bool over_size = true>
@@ -96,7 +96,7 @@ namespace mbl // namespace meta bit library
 	{
 		return detail::_SetAfterTrue<T>::Result(x);
 	}
-	// Число ведущих нулей
+	// Р§РёСЃР»Рѕ РІРµРґСѓС‰РёС… РЅСѓР»РµР№
 	template<typename T>
 	size8_t NumberLeadingZero(T x)
 	{
@@ -105,7 +105,7 @@ namespace mbl // namespace meta bit library
 		return number;
 	}
 	
-	// Целочисленный log2 по основанию 2
+	// Р¦РµР»РѕС‡РёСЃР»РµРЅРЅС‹Р№ log2 РїРѕ РѕСЃРЅРѕРІР°РЅРёСЋ 2
 	template<typename T>
 	T ilog2(T x)
 	{
@@ -114,14 +114,14 @@ namespace mbl // namespace meta bit library
 		return val_log2;
 	}
 
-	// Проверка, чтобы только 1н бит установлен в лог.1;
+	// РџСЂРѕРІРµСЂРєР°, С‡С‚РѕР±С‹ С‚РѕР»СЊРєРѕ 1РЅ Р±РёС‚ СѓСЃС‚Р°РЅРѕРІР»РµРЅ РІ Р»РѕРі.1;
 	template<typename T>
 	bool OnlySingleTrue(T x)
 	{
 		return (Count<T>(x) == 1);
 	}
 	
-	// Подсчет количества завершающих нулевых бит
+	// РџРѕРґСЃС‡РµС‚ РєРѕР»РёС‡РµСЃС‚РІР° Р·Р°РІРµСЂС€Р°СЋС‰РёС… РЅСѓР»РµРІС‹С… Р±РёС‚
 	template<typename T>
 	T CountTrailingZeros(T x)
 	{
@@ -129,7 +129,7 @@ namespace mbl // namespace meta bit library
 		return Count<T>(y);
 	}
 	
-	// Установка или сброс с разряда a по b
+	// РЈСЃС‚Р°РЅРѕРІРєР° РёР»Рё СЃР±СЂРѕСЃ СЃ СЂР°Р·СЂСЏРґР° a РїРѕ b
 	template<typename T>
 	T SetInRange(const T &x,const size8_t &at,const size8_t &to, bool _val = true)
 	{

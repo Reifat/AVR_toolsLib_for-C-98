@@ -1,4 +1,4 @@
-#ifndef TIMER_H_
+п»ї#ifndef TIMER_H_
 #define TIMER_H_
 // Simple timer TC0 for ATtiny2313
 
@@ -72,19 +72,19 @@ class Timer :public mbl::RegisterSet<mbl::reg8_t>::n_static_
 			break;
 		}
 	}
-	inline void OCR_OffOut() const{ // Отключить вывод OCR0A
+	inline void OCR_OffOut() const{ // РћС‚РєР»СЋС‡РёС‚СЊ РІС‹РІРѕРґ OCR0A
 		*_tccr_a &= ~(1 << 6); // COM00A0 reset
 		*_tccr_a &= ~(1 << 7); // COM00A1 reset
 	}
-	inline void OCR_FlipOut_If_Match() const{ // Изменить вывод OCR0A на противоположное в момент совпадения
+	inline void OCR_FlipOut_If_Match() const{ // РР·РјРµРЅРёС‚СЊ РІС‹РІРѕРґ OCR0A РЅР° РїСЂРѕС‚РёРІРѕРїРѕР»РѕР¶РЅРѕРµ РІ РјРѕРјРµРЅС‚ СЃРѕРІРїР°РґРµРЅРёСЏ
 		*_tccr_a |=  (1 << 6); // COM00A0 set
 		*_tccr_a &= ~(1 << 7); // COM00A1 reset
 	}
-	inline void OCR_SetOut_If_Match() const{ // Установить вывод OCR0A в момент совпадения
+	inline void OCR_SetOut_If_Match() const{ // РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РІС‹РІРѕРґ OCR0A РІ РјРѕРјРµРЅС‚ СЃРѕРІРїР°РґРµРЅРёСЏ
 		*_tccr_a &= ~(1 << 6); // COM00A0 reset
 		*_tccr_a |=  (1 << 7); // COM00A1 set
 	}
-	inline void OCR_ResetOut_If_Match() const{ // Сбросить вывод OCR0A в момент совпадения
+	inline void OCR_ResetOut_If_Match() const{ // РЎР±СЂРѕСЃРёС‚СЊ РІС‹РІРѕРґ OCR0A РІ РјРѕРјРµРЅС‚ СЃРѕРІРїР°РґРµРЅРёСЏ
 		*_tccr_a |= (1 << 6); // COM00A0 set
 		*_tccr_a |= (1 << 6); // COM00A1 set
 	}

@@ -1,7 +1,7 @@
-/* Функция инициализации объектов класса RegisterSet
- * Автор Reifat
+п»ї/* Р¤СѓРЅРєС†РёСЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё РѕР±СЉРµРєС‚РѕРІ РєР»Р°СЃСЃР° RegisterSet
+ * РђРІС‚РѕСЂ Reifat
  * GitHub Repository - https://github.com/Reifat
- * Последние изменения 30.04.2020.
+ * РџРѕСЃР»РµРґРЅРёРµ РёР·РјРµРЅРµРЅРёСЏ 30.04.2020.
 */
 #ifndef REGISTER_INIT_HPP
 #define REGISTER_INIT_HPP
